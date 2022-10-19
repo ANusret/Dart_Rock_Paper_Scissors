@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 
-enum durum {tas, kagit, makas}
+enum state {rock, paper, scissors}
 void main(List<String> args) {
 
   Random random = new Random();
@@ -10,31 +10,31 @@ void main(List<String> args) {
   
   do {
 
-    print("tas, kagit, makas??");
+    print("rock, paper, scissors??");
     var player = stdin.readLineSync();
 
     int rndm = random.nextInt(3) + 0;
-    var computer = durum.values.elementAt(rndm);
+    var computer = state.values.elementAt(rndm);
 
-    print("Seçtiğiniz $player bilgisayarın seçtiği " + computer.name);
+    print("Your choose: $player , PC choose: " + computer.name);
 
-    if (player == "tas") {
-      print((tas(computer.name)));
+    if (player == "rock") {
+      print((rock(computer.name)));
     }
-    else if(player == "kagit"){
-      print((kagit(computer.name)));
+    else if(player == "paper"){
+      print((paper(computer.name)));
     }
-    else if(player == "makas"){
-      print((makas(computer.name)));
+    else if(player == "scissors"){
+      print((scissors(computer.name)));
     }
     else{
-      print("Geçerli bir seçenek girmediniz.");
+      print("You did not enter a valid option.");
     }
 
-    print("Çıkmak için 1'e devam etmek için rastgele bir tuşa basınız. ");
-    var deger = stdin.readLineSync();
+    print("Press '1' to exit. Press any key to continue. ");
+    var value = stdin.readLineSync();
 
-    if (deger == '1') {
+    if (value == '1') {
       go = false;
     } 
 
@@ -42,43 +42,43 @@ void main(List<String> args) {
 
 }
 
-String tas(var pc) {
+String rock(var pc) {
   String winner = "";
-  if (pc == "kagit") {
-    winner = "Kaybettiniz.";
+  if (pc == "paper") {
+    winner = "You lost.";
   }
-  if (pc == "makas") {
-    winner = "Kazandınız.";
+  if (pc == "scissors") {
+    winner = "You win.";
   }
-  if (pc == "tas") {
+  if (pc == "rock") {
     winner = "Berabere.";
   }
   return winner;
 }
 
-String kagit(var pc) {
+String paper(var pc) {
   String winner = "";
-  if (pc == "tas") {
-    winner = "Kazandınız.";
+  if (pc == "rock") {
+    winner = "You win.";
   }
-  if (pc == "makas") {
-    winner = "Kaybettiniz.";
+  if (pc == "scissors") {
+    winner = "You lost.";
   }
-  if (pc == "kagit") {
+  if (pc == "paper") {
     winner = "Berabere.";
   }
   return winner;
 }
 
-String makas(var pc) {
+String scissors(var pc) {
   String winner = "";
-  if (pc == "kagit") {
-    winner = "Kazandınız.";
+  if (pc == "paper") {
+    winner = "You win.";
   }
-  if (pc == "tas") {
-    winner = "Kaybettiniz.";
+  if (pc == "rock") {
+    winner = "You lost.";
   }
-  if (pc == "makas") {
+  if (pc == "scissors") {
     winner = "Berabere.";
   }
   return winner;
